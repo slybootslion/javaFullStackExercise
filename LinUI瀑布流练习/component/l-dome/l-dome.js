@@ -11,7 +11,18 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    tags: []
+  },
+  lifetimes: {
+    ready() {
+      let tags
+      if(this.data.data.tags){
+        tags = this.data.data.tags.split('$')
+      }
+     this.setData({
+       tags
+     })
+    },
   },
 
   /**

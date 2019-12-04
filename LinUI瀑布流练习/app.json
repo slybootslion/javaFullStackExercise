@@ -5,7 +5,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "LinUI瀑布流练习",
     "navigationBarTextStyle": "black"
   },
   "style": "v2",

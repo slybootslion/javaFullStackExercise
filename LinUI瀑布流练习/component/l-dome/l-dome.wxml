@@ -1,11 +1,13 @@
 <!--component/l-dome/l-dome.wxml-->
-<!-- <l-card full type="cover" image="{{data.img}}" title="{{data.title}}" l-class="life-container" l-img-class="life-img" l-title-class="life-title" bindtap="onProduct">
+<l-card full type="cover" image="{{data.img}}" title="{{data.title}}" l-class="life-container" l-img-class="life-img" l-title-class="life-title">
   <view class='life-product-contianer'>
-    <view class='art-content'>{{data.subtitle}}</view>
-    <view class='price-container'>
-      <l-price unit="￥" value="{{data.count}}" value-color="#ad0e11" unit-color="#ad0e11" value-size="36"></l-price>
-      <l-price l-class="del-price" unit="￥" value="{{data.price}}" value-color="#ad0e11" unit-color="#ad0e11" deleted del-color="#666" value-color="#666" unit-color="#666"></l-price>
+    <view class="tag" wx:if="{{tags.length > 0}}">
+      <view class="tag-item" wx:for="{{tags}}">{{item}}</view>
     </view>
+    <view class='price-container'>
+      <l-price unit="￥" class="price" value="{{data.price}}" value-color="#ad0e11" unit-color="#ad0e11" value-size="36"></l-price>
+      <l-price wx:if="{{data.discount_price}}" size="14rpx" l-class="del-price" unit="￥" value="{{data.discount_price}}" value-color="#ad0e11" unit-color="#ad0e11" deleted del-color="#888" value-color="#888" unit-color="#888"></l-price>
+    </view>
+    <view class='art-content'>{{data.subtitle}}</view>
   </view>
-</l-card> -->
-<l-card full type="cover" image="{{data.img}}" title="{{data.title}}" l-class="life-container" l-img-class="life-img" l-title-class="life-title"></l-card>
+</l-card>
