@@ -1,0 +1,6 @@
+<!--pages/home/home.wxml-->
+<view>
+  <text>1</text>
+  <l-icon name="add"> </l-icon>
+  <l-water-flow generic:l-water-flow-item="l-demo"/>
+</view>
