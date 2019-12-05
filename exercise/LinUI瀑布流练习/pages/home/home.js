@@ -31,7 +31,6 @@ Page({
   },
   setWaterflowData() {
     const {list} = this.data
-    console.log(list)
     wx.lin.renderWaterFlow(list, false, () => {
       console.log('渲染成功')
     })

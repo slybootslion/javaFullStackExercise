@@ -1,0 +1,12 @@
+<!--pages/home/home.wxml-->
+<view class="home-page">
+  <image src="{{homeThemeA.entrance_img}}" class="theme-a"></image>
+  <swiper class="banner-swiper" autoplay indicator-dots indicator-active-color="#157658" circular>
+    <block wx:for="{{homeBanner}}" wx:key="index">
+      <swiper-item>
+        <image class="banner-swiper" src="{{item.img}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <s-catefory-grid homeGrid="{{homeGrid}}"/>
+</view>

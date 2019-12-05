@@ -1,0 +1,10 @@
+/* pages/home/home.wxss */
+.theme-a{
+  width: 100%;
+  height: 260rpx;
+}
+
+.banner-swiper{
+  width: 100%;
+  height: 360rpx;
+}
