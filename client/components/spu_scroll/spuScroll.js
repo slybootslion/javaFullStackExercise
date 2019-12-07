@@ -16,6 +16,7 @@ Component({
   },
   lifetimes: {
     ready() {
+      console.log(this.data.theme)
       console.log(this.data.supList)
     }
   },

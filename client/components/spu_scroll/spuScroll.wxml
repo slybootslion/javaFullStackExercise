@@ -1,4 +1,11 @@
 <!--components/spu-scroll/spu-scroll.wxml-->
-<view>
-<text wx:for="{{supList}}">test</text>
+<view class="container">
+  <image class="title_img" src="{{theme.title_img}}"></image>
+  <scroll-view class="scroll-box">
+    <block wx:for="{{supList}}">
+      <image class="item-pic" src="{{item.img}}"></image>
+      <l-price value="{{item.price}}" autofix l-unit-class="pic-sty" l-value-class="pic-sty" />
+      <view class="item-title">{{item.title}}</view>
+    </block>
+  </scroll-view>
 </view>
