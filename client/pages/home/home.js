@@ -8,6 +8,9 @@ import {
 import {
   Category
 } from '../../model/category.js'
+import {
+  Activity
+} from '../../model/activity.js'
 
 Page({
 
@@ -17,7 +20,10 @@ Page({
   data: {
     homeThemeA: null,
     homeBanner: null,
-    homeGrid: []
+    homeGrid: [],
+    homeActivity: null,
+    homeThemeB: null,
+    homeThemeBSpuList: null,
   },
 
   /**
@@ -28,14 +34,26 @@ Page({
   },
 
   async initAllData() {
-    const homeThemeA = (await Theme.homeThemeA())[0]
+    const theme = new Theme()
+    await theme.homeThemes()
+    const homeThemeA = theme.homeThemeA()
     const homeBanner = (await Banner.homeBanner()).items
     const homeGrid = await Category.homeGrid()
+    const homeActivity = await Activity.homeActivity()
+    const homeThemeB = theme.homeThemeB()
+    let homeThemeBSpuList
+    if (homeThemeB.online) {
+      homeThemeBSpuList = (await Theme.getThemeBSpu()).spu_list.slice(0, 7)
+    }
+    // console.log(homeThemeB)
 
     this.setData({
       homeThemeA,
       homeBanner,
-      homeGrid
+      homeGrid,
+      homeActivity,
+      homeThemeB,
+      homeThemeBSpuList
     })
   },
 

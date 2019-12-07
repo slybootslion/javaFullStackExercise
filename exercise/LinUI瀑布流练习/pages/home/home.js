@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: []
+    list: [],
+    picUrl: '',
+    height: 0
   },
 
   /**
@@ -15,11 +17,13 @@ Page({
     this.getData()
   },
   getData() {
+    const baseURL = 'http://se.7yue.pro/v1'
+    const appkey = 'YYnRnGHl86NFBoJb'
     wx.request({
-      url: 'http://se.7yue.pro/v1/spu/latest',
+      url: baseURL + '/spu/latest',
       method: 'GET',
       header: {
-        appkey: 'YYnRnGHl86NFBoJb'
+        appkey
       },
       success: (res) => {
         this.setData({
@@ -28,9 +32,36 @@ Page({
         this.setWaterflowData()
       }
     })
+    wx.request({
+      url: baseURL + '/theme/by/names',
+      data: {
+        names: 't-4'
+      },
+      header: {
+        appkey
+      },
+      success: (res) => {
+        console.log(res)
+        wx.getImageInfo({
+          src: res.data[0].internal_top_img,
+          success: (res) => {
+            console.log(res)
+            this.setData({
+              height: res.height + 'rpx'
+            })
+          }
+        })
+
+        this.setData({
+          picUrl: res.data[0].internal_top_img
+        })
+      }
+    })
   },
   setWaterflowData() {
-    const {list} = this.data
+    const {
+      list
+    } = this.data
     wx.lin.renderWaterFlow(list, false, () => {
       console.log('渲染成功')
     })

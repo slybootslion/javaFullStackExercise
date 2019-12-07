@@ -11,10 +11,27 @@ Component({
    * 组件的初始数据
    */
   data: {
-    tags: []
+    tags: [],
+    height: 0
   },
   lifetimes: {
     ready() {
+      wx.getImageInfo({
+        src: this.data.data.img,
+        success: (res) => {
+          console.log(res)
+          const originHeight = res.height;
+          const originWidth = res.width;
+          const width = 350
+          const height = width * originHeight / originWidth
+
+          this.setData({
+            height: height + 'rpx'
+          })
+        }
+      })
+
+
       let tags
       if(this.data.data.tags){
         tags = this.data.data.tags.split('$')
@@ -28,10 +45,5 @@ Component({
   /**
    * 组件的方法列表
    */
-  methods: {
-    getData(){
-      console.log(this.data)
-    }
-
-  }
+  methods: {  }
 })

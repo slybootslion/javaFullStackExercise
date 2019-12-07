@@ -1,6 +1,8 @@
 <!--component/l-dome/l-dome.wxml-->
-<l-card full type="cover" image="{{data.img}}" title="{{data.title}}" l-class="life-container" l-img-class="life-img" l-title-class="life-title">
+<view class="life-container">
   <view class='life-product-contianer'>
+    <image src="{{data.img}}" style="height: {{height}}" class="pic"></image>
+    <view class="life-title">{{data.title}}</view>
     <view class="tag" wx:if="{{tags.length > 0}}">
       <view class="tag-item" wx:for="{{tags}}">{{item}}</view>
     </view>
@@ -10,4 +12,4 @@
     </view>
     <view class='art-content'>{{data.subtitle}}</view>
   </view>
-</l-card>
+</view>

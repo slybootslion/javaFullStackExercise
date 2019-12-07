@@ -1,0 +1,4 @@
+<!--components/spu-scroll/spu-scroll.wxml-->
+<view>
+<text wx:for="{{supList}}">test</text>
+</view>

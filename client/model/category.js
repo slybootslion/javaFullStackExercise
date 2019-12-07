@@ -1,3 +1,6 @@
+/**
+ * 分类
+ */
 import {Http} from '../utils/http.js'
 
 class Category {
