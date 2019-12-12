@@ -1,11 +1,15 @@
 <!--components/spu-scroll/spu-scroll.wxml-->
 <view class="container">
   <image class="title_img" src="{{theme.title_img}}"></image>
-  <scroll-view class="scroll-box">
-    <block wx:for="{{supList}}">
-      <image class="item-pic" src="{{item.img}}"></image>
-      <l-price value="{{item.price}}" autofix l-unit-class="pic-sty" l-value-class="pic-sty" />
-      <view class="item-title">{{item.title}}</view>
-    </block>
+  <scroll-view scroll-x class="scroll-box">
+    <view class="scroll-inner">
+      <block wx:for="{{supList}}">
+        <view class="scroll-item">
+          <image class="item-pic" src="{{item.img}}"></image>
+          <l-price value="{{item.price}}" autofix l-unit-class="pic-sty" l-value-class="pic-sty" />
+          <view class="item-title">{{item.title}}</view>
+        </view>
+      </block>
+    </view>
   </scroll-view>
 </view>
