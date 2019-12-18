@@ -24,6 +24,7 @@ Page({
     homeActivity: null,
     homeThemeB: null,
     homeThemeBSpuList: null,
+    homeThemeC: null
   },
 
   /**
@@ -41,11 +42,12 @@ Page({
     const homeGrid = await Category.homeGrid()
     const homeActivity = await Activity.homeActivity()
     const homeThemeB = theme.homeThemeB()
+    const homeThemeC = theme.homeThemeC()
     let homeThemeBSpuList
     if (homeThemeB.online) {
       homeThemeBSpuList = (await Theme.getThemeBSpu()).spu_list.slice(0, 7)
     }
-    // console.log(homeThemeB)
+    // console.log(homeThemeC)
 
     this.setData({
       homeThemeA,
@@ -53,7 +55,8 @@ Page({
       homeGrid,
       homeActivity,
       homeThemeB,
-      homeThemeBSpuList
+      homeThemeBSpuList,
+      homeThemeC
     })
   },
 
