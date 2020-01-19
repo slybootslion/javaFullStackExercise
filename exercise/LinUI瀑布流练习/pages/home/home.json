@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "l-icon": "/miniprogram_npm/lin-ui/icon/index",
-    "l-water-flow": "/miniprogram_npm/lin-ui/water-flow/index",
-    "l-demo": "/component/l-dome/l-dome"
-  }
-}

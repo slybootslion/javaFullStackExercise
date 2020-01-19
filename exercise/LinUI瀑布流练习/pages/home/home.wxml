@@ -1,5 +1,0 @@
-<!--pages/home/home.wxml-->
-<view>
-  <image src="{{picUrl}}" class="pic" style="height: {{height}}; width: 100%"></image>
-  <l-water-flow generic:l-water-flow-item="l-demo" column-gap="5rpx" />
-</view>
