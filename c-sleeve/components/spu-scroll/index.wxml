@@ -1,0 +1,13 @@
+<!--components/spu-scroll/index.wxml-->
+<view class="container">
+  <image src="{{theme.title_img}}" class="title"></image>
+  <scroll-view>
+    <block wx:for="{{spuList}}">
+      <view>
+        <image src="{{item.img}}"></image>
+        <l-price color="#157658" value="{{item.price}}" l-unit-class="price" l-value-class="price"></l-price>
+        <text>{{item.title}}</text>
+      </view>
+    </block>
+  </scroll-view>
+</view>

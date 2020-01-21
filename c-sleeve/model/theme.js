@@ -29,6 +29,17 @@ class Theme {
   getHomeLocationE() {
     return this.themes.find(i => i.name === Theme.locationE)
   }
+
+  static getHomeLocationESpu() {
+    return Theme.getThemeSpuByName(Theme.locationE)
+  }
+
+  // 获取带有spu信息的单个主题
+  static getThemeSpuByName(name) {
+    return Http.request({
+      url: `/theme/name/${name}/with_spu`
+    })
+  }
 }
 
 export {
