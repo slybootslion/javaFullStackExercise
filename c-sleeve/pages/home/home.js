@@ -12,6 +12,14 @@ import {
   Banner
 } from '../../model/banner.js'
 
+import {
+  Category
+} from '../../model/category.js'
+
+import {
+  Activity
+} from '../../model/activity.js'
+
 Page({
 
   /**
@@ -19,7 +27,10 @@ Page({
    */
   data: {
     themeA: null,
-    bannerB: null
+    bannerB: null,
+    grid: [],
+    activityD: null
+
   },
 
   /**
@@ -32,9 +43,13 @@ Page({
   async initAllData() {
     const themeA = (await Theme.getHomeLocationA())[0]
     const bannerB = await Banner.getHomeLocationB()
+    const grid = await Category.getHomeLocationC()
+    const activityD = await Activity.getHomeLocationD()
     this.setData({
       themeA,
-      bannerB
+      bannerB,
+      grid,
+      activityD
     })
   },
 

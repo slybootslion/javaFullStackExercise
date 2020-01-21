@@ -8,4 +8,6 @@
       </swiper-item>
     </block>
   </swiper>
+  <d-category-grid grid="{{grid}}"></d-category-grid>
+  <image class="activity" src="{{activityD.entrance_img}}"></image>
 </view>

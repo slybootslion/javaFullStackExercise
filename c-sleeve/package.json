@@ -1,0 +1,14 @@
+{
+  "name": "sleeve",
+  "version": "0.1.0",
+  "description": "Java全栈课程小程序部分",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "slybootslion",
+  "license": "ISC",
+  "dependencies": {
+    "lin-ui": "^0.7.2"
+  }
+}
