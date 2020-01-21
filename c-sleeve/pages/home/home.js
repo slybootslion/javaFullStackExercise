@@ -27,6 +27,7 @@ Page({
    */
   data: {
     themeA: null,
+    themeE: null,
     bannerB: null,
     grid: [],
     activityD: null
@@ -41,12 +42,18 @@ Page({
   },
 
   async initAllData() {
-    const themeA = (await Theme.getHomeLocationA())[0]
+    const theme = new Theme()
+    await theme.getThemes()
+    const themeA = theme.getHomeLocationA()
+    const themeE = theme.getHomeLocationE()
+
     const bannerB = await Banner.getHomeLocationB()
     const grid = await Category.getHomeLocationC()
     const activityD = await Activity.getHomeLocationD()
+
     this.setData({
       themeA,
+      themeE,
       bannerB,
       grid,
       activityD
