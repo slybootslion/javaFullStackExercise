@@ -1,14 +1,16 @@
 <!--components/spu-scroll/index.wxml-->
-<view class="container">
+<view class="container d-class">
   <image src="{{theme.title_img}}" class="title"></image>
-  <scroll-view>
-    <block wx:for="{{spuList}}">
-      <view>
-        <image src="{{item.img}}"></image>
-        <!-- l-unit-class="price" l-value-class="price" -->
-        <l-price color="#157658" value="{{item.price}}" l-class="price"></l-price>
-        <text>{{item.title}}</text>
-      </view>
-    </block>
+  <scroll-view scroll-x class="scroll-view">
+    <view class="inner">
+      <block wx:for="{{spuList}}">
+        <view class="spu-container">
+          <image src="{{item.img}}" class="spu-img"></image>
+          <text class="sup-text">{{item.title}}</text>
+          <l-price color="#157658" value="{{item.price}}" l-class="price"></l-price>
+        </view>
+      </block>
+      <view class="block-view"></view>
+    </view>
   </scroll-view>
 </view>

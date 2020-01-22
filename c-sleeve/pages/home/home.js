@@ -28,6 +28,7 @@ Page({
   data: {
     themeA: null,
     themeE: null,
+    themeF: null,
     themeESpu: [],
     bannerB: null,
     grid: [],
@@ -47,6 +48,7 @@ Page({
     await theme.getThemes()
     const themeA = theme.getHomeLocationA()
     const themeE = theme.getHomeLocationE()
+    const themeF = theme.getHomeLocationF()
     let themeESpu = []
     if (themeE.online) {
       // 带有spu信息的主题
@@ -60,6 +62,7 @@ Page({
     this.setData({
       themeA,
       themeE,
+      themeF,
       themeESpu,
       bannerB,
       grid,

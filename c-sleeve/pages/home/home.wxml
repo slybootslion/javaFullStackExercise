@@ -10,5 +10,6 @@
   </swiper>
   <s-category-grid grid="{{grid}}"></s-category-grid>
   <image class="activity" src="{{activityD.entrance_img}}"></image>
-  <s-spu-scroll theme="{{themeE}}" spuList="{{themeESpu}}"></s-spu-scroll>
+  <s-spu-scroll d-class="spu-scroll" theme="{{themeE}}" spuList="{{themeESpu}}"></s-spu-scroll>
+  <image class="quality" src="{{themeF.entrance_img}}"></image>
 </view>

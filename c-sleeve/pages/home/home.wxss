@@ -17,3 +17,15 @@
   height: 310rpx;
   display: block;
 }
+
+.spu-scroll{
+  margin-top: 20rpx;
+}
+
+.quality{
+  width: 100%;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  height: 880rpx;
+  display: block;
+}
