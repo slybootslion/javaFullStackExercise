@@ -1,5 +1,5 @@
 <!--components/spu-scroll/index.wxml-->
-<view class="container d-class">
+<view class="container s-class">
   <image src="{{theme.title_img}}" class="title"></image>
   <scroll-view scroll-x class="scroll-view">
     <view class="inner">

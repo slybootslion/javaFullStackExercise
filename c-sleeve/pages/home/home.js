@@ -29,8 +29,10 @@ Page({
     themeA: null,
     themeE: null,
     themeF: null,
+    themeH: null,
     themeESpu: [],
     bannerB: null,
+    bannerG: null,
     grid: [],
     activityD: null
 
@@ -49,6 +51,7 @@ Page({
     const themeA = theme.getHomeLocationA()
     const themeE = theme.getHomeLocationE()
     const themeF = theme.getHomeLocationF()
+    const themeH = theme.getHomeLocationH()
     let themeESpu = []
     if (themeE.online) {
       // 带有spu信息的主题
@@ -56,15 +59,21 @@ Page({
     }
 
     const bannerB = await Banner.getHomeLocationB()
+    const bannerG = await Banner.getHomeLocationG()
+
     const grid = await Category.getHomeLocationC()
     const activityD = await Activity.getHomeLocationD()
+
+
 
     this.setData({
       themeA,
       themeE,
       themeF,
+      themeH,
       themeESpu,
       bannerB,
+      bannerG,
       grid,
       activityD
     })

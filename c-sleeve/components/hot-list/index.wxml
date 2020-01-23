@@ -1,0 +1,17 @@
+<!--components/hot-list/index.wxml-->
+<view class="container">
+  <image class="title" src="{{banner.img}}"></image>
+  <view class="inner-container">
+    <view hover-class="rect-hover" hover-start-time="200">
+      <image class="left" src="{{left.img}}"></image>
+    </view>
+    <view class="right-container">
+      <view hover-class="rect-hover" hover-start-time="200">
+        <image class="right-size" src="{{rightTop.img}}"></image>
+      </view>
+      <view hover-class="rect-hover" hover-start-time="200">
+        <image class="right-size" src="{{rightBottom.img}}"></image>
+      </view>
+    </view>
+  </view>
+</view>
