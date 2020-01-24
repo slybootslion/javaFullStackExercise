@@ -20,6 +20,10 @@ import {
   Activity
 } from '../../model/activity.js'
 
+import {
+  SpuPaging
+} from '../../model/spu-paging.js'
+
 Page({
 
   /**
@@ -80,7 +84,9 @@ Page({
   },
 
   async initBottomSpuList() {
-    
+    const paging = await SpuPaging.getLatestPaging()
+    const data = paging.getMoreData()
+    if (!data) return false
   },
 
   /**
