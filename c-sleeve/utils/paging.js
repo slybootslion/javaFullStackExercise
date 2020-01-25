@@ -9,7 +9,7 @@ class Paging {
   count // 分页数量
   locker // 发送请求的锁
   req // 请求数据 {url, method, data}
-  moreData // 是否有更多数据的判断
+  moreData = true // 是否有更多数据的判断
   accumulator = [] // 类加的数据
 
   constructor({
@@ -20,7 +20,7 @@ class Paging {
     this.req = req
     this.url = req.url
     this.start = start
-    this.locker = locker
+    this.count = count
   }
 
   // 入口方法
@@ -75,7 +75,7 @@ class Paging {
     let url = this.url
     const params = `start=${this.start}&count=${this.count}`
 
-    if (url.indexOf('?') !== -1) {
+    if (url.includes('?')) {
       url += `&${params}`
     } else {
       url += `?${params}`

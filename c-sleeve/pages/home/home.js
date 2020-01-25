@@ -47,6 +47,7 @@ Page({
    */
   onLoad(options) {
     this.initAllData()
+    this.initBottomSpuList()
   },
 
   async initAllData() {
