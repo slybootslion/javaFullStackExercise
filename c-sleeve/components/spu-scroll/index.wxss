@@ -29,6 +29,10 @@
   align-items: center;
 }
 
+.spu-container:nth-last-child(2) {
+  margin-right: 28rpx;
+}
+
 .spu-img {
   width: 160rpx;
   height: 160rpx;

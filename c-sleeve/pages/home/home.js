@@ -69,8 +69,6 @@ Page({
     const grid = await Category.getHomeLocationC()
     const activityD = await Activity.getHomeLocationD()
 
-
-
     this.setData({
       themeA,
       themeE,
@@ -85,9 +83,11 @@ Page({
   },
 
   async initBottomSpuList() {
-    const paging = await SpuPaging.getLatestPaging()
-    const data = paging.getMoreData()
+    const paging = SpuPaging.getLatestPaging()
+    const data = (await paging.getMoreData()).items
     if (!data) return false
+    console.log(data)
+    wx.lin.renderWaterFlow(data)
   },
 
   /**

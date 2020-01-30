@@ -11,7 +11,7 @@ Component({
 
   observers: {
     banner(b) {
-      if (!b.items || !b.items.length) return false;
+      if (!b || !b.items || !b.items.length) return false;
       const left = b.items.find(i => i.name === 'left')
       const rightTop = b.items.find(i => i.name === 'right-top')
       const rightBottom = b.items.find(i => i.name === 'right-bottom')
