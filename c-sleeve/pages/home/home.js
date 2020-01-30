@@ -38,8 +38,9 @@ Page({
     bannerB: null,
     bannerG: null,
     grid: [],
-    activityD: null
-
+    activityD: null,
+    spuPaging: null, // 加载页面类的对象
+    loadingType: 'loading'
   },
 
   /**
@@ -82,26 +83,22 @@ Page({
     })
   },
 
-  async initBottomSpuList() {
-    const paging = SpuPaging.getLatestPaging()
-    const data = (await paging.getMoreData()).items
-    if (!data) return false
-    console.log(data)
-    wx.lin.renderWaterFlow(data)
+  initBottomSpuList() {
+    const spuPaging = SpuPaging.getLatestPaging()
+    this.data.spuPaging = spuPaging
+    this._renderWaterFlow()
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh() {
-
-  },
+  onPullDownRefresh() {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-
+    this._renderWaterFlow()
   },
 
   /**
@@ -109,5 +106,19 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+
+  async _renderWaterFlow() {
+    const {
+      spuPaging
+    } = this.data
+    const data = await spuPaging.getMoreData()
+    if (!data) return false
+    wx.lin.renderWaterFlow(data.items)
+    if (!data.moreData) {
+      this.setData({
+        loadingType: 'end'
+      })
+    }
   }
 })

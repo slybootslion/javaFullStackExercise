@@ -8,7 +8,7 @@ class SpuPaging {
       req: {
         url: '/spu/latest'
       },
-      count: 3
+      count: 5
     })
   }
 }

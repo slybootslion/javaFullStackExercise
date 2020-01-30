@@ -1,4 +1,6 @@
 <!--components/spu-scroll/index.wxml-->
+<wxs src="../../wxs/price.wxs" module="p"></wxs>
+
 <view class="container s-class">
   <image src="{{theme.title_img}}" class="title"></image>
   <scroll-view scroll-x class="scroll-view">
@@ -7,7 +9,7 @@
         <view class="spu-container">
           <image src="{{item.img}}" class="spu-img"></image>
           <text class="sup-text">{{item.title}}</text>
-          <l-price color="#157658" value="{{item.price}}" l-class="price"></l-price>
+          <l-price color="#157658" value="{{p.mainPrice(item.price, item.discount_price)}}" l-class="price"></l-price>
         </view>
       </block>
       <view class="block-view"></view>

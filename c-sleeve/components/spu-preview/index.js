@@ -5,7 +5,9 @@ Component({
    */
   properties: {
     data: {
-      type: Object
+      type: Object,
+      width: 0,
+      height: 0
     }
   },
 
@@ -30,6 +32,21 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onImgLoad(e) {
+      const {
+        width,
+        height
+      } = e.detail
+      this.setData({
+        width: 340,
+        height: 340 * height / width
+      })
+    },
+    onItemTap(e) {
+      const pid = e.currentTarget.dataset.pid
+      wx.navigateTo({
+        url: `/pages/detail/detail?pid=${pid}`,
+      })
+    }
   }
 })

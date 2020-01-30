@@ -15,10 +15,10 @@
   padding: 16rpx 16rpx 22rpx 16rpx;
 }
 
-.img {
+/* .img {
   width: 100%;
   height: 360rpx;
-}
+} */
 
 .tags {
   margin: 6rpx 0 8rpx;
