@@ -3,7 +3,7 @@
   <view>
     <image></image>
   </view>
-  <block wx:for="{{}}">
+  <block wx:for="{{}}" wx:key="index">
     <s-fence></s-fence>
   </block>
   <view class="counter-container">
