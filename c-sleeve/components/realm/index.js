@@ -17,7 +17,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    fences: []
   },
   observers: {
     spu(spu) {
@@ -25,6 +25,7 @@ Component({
       let sku = []
       const fenceGroup = new FenceGroup(spu)
       fenceGroup.initFences()
+      this.bindInitData(fenceGroup)
     }
   },
 
@@ -32,6 +33,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    bindInitData(fenceGroup) {
+      this.setData({
+        fences: fenceGroup.fences
+      })
+    }
   }
 })
