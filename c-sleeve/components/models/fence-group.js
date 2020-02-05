@@ -26,7 +26,6 @@ class FenceGroup {
       fences.push(fence)
     })
     this.fences = fences
-    console.log(fences)
   }
 
   _createMatrix(skuList) {

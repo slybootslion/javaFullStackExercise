@@ -6,6 +6,9 @@ Component({
   properties: {
     fence: {
       type: Object
+    },
+    x: {
+      type: Number
     }
   },
 
@@ -19,7 +22,5 @@ Component({
   /**
    * 组件的方法列表
    */
-  methods: {
-
-  }
+  methods: {}
 })

@@ -6,6 +6,12 @@ Component({
   properties: {
     cell: {
       type: Object
+    },
+    x: {
+      type: Number
+    },
+    y: {
+      type: Number
     }
   },
 
@@ -15,11 +21,24 @@ Component({
   data: {
 
   },
-
   /**
    * 组件的方法列表
    */
   methods: {
-
+    onTap(e) {
+      const {
+        cell,
+        x,
+        y
+      } = this.properties
+      this.triggerEvent('celltap', {
+        cell,
+        x,
+        y
+      }, {
+        bubbles: true,
+        composed: true
+      })
+    },
   }
 })
