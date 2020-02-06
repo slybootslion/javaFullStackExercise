@@ -9,7 +9,7 @@ import {
 class FenceGroup {
   spu
   skuList = []
-  fences= []
+  fences = []
 
   constructor(spu) {
     this.spu = spu
@@ -26,6 +26,16 @@ class FenceGroup {
       fences.push(fence)
     })
     this.fences = fences
+  }
+
+  // 便利每一个cell，返回当前cell以及所处的行数、列数
+  eachCell(cb) {
+    for (let i = 0; i < this.fences.length; i++) {
+      for (let j = 0; j < this.fences[i].cells.length; j++) {
+        const cell = this.fences[i].cells[j]
+        cb(cell, i, j)
+      }
+    }
   }
 
   _createMatrix(skuList) {
