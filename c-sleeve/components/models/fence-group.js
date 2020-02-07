@@ -1,14 +1,5 @@
-import {
-  Matrix
-} from './matrix.js'
-
-import {
-  Fence
-} from './fence.js'
-
-import {
-  CellStatus
-} from '../../core/enum.js'
+import { Fence } from './fence.js';
+import { Matrix } from './matrix.js';
 
 class FenceGroup {
   spu
@@ -24,6 +15,12 @@ class FenceGroup {
     const deafultSkuId = this.spu.default_sku_id
     if (!deafultSkuId) return false
     return this.skuList.find(i => i.id === deafultSkuId)
+  }
+
+  getSku(skuCode) {
+    const fullSkuCode = this.spu.id + '$' + skuCode
+    const sku = this.spu.sku_list.find(sku => sku.code === fullSkuCode)
+    return sku ? sku : null
   }
 
   setCellStatusById(cellId, status) {

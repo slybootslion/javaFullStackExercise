@@ -1,18 +1,8 @@
-import {
-  SkuCode
-} from './sku-code.js'
-
-import {
-  SkuPending
-} from './sku-pending.js'
-
-import {
-  Joiner
-} from '../../utils/joiner.js'
-
-import {
-  CellStatus
-} from '../../core/enum.js'
+import { SkuCode } from './sku-code.js'
+import { SkuPending } from './sku-pending.js'
+import { Joiner } from '../../utils/joiner.js'
+import { CellStatus } from '../../core/enum.js'
+import { Cell } from './cell.js'
 
 class Judger {
   fenceGroup
@@ -28,6 +18,15 @@ class Judger {
   // sku是否全部选择
   isSkuIntact() {
     return this.skuPending.isIntact()
+  }
+
+  getCurrentValues() {
+    return this.skuPending.getCurrentSpecValues()
+  }
+
+  getMissingKeys() {
+    const missingKeysIndex = this.skuPending.getMissingSpecKeysIndex()
+    return missingKeysIndex.map(i => this.fenceGroup.fences[i].title)
   }
 
   _initSkuPending() {
@@ -69,6 +68,13 @@ class Judger {
     })
   }
 
+  // 获取确认的sku
+  getDeterminateSku() {
+    const code = this.skuPending.getSkuCode()
+    const sku = this.fenceGroup.getSku(code)
+    return sku
+  }
+
   _isInDict(path) {
     return this.pathDict.includes(path)
   }
@@ -82,12 +88,14 @@ class Judger {
         // 已选中不加入路径拼接，如果有其他选中进入下一行
         if (this.skuPending.isSelected(cell, x)) return false
         // 其他未选中加入路径拼接
-        const cellCode = this._getCellCode(cell.spec)
+        // const cellCode = this._getCellCode(cell.spec)
+        const cellCode = Cell.getCellCode(cell.spec)
         joiner.join(cellCode)
       } else {
         // 其他行
         if (selected) { // 选中元素
-          const selectedCellCode = this._getCellCode(selected.spec)
+          // const selectedCellCode = this._getCellCode(selected.spec)
+          const selectedCellCode = Cell.getCellCode(selected.spec)
           joiner.join(selectedCellCode)
         }
       }
@@ -95,9 +103,9 @@ class Judger {
     return joiner.getStr()
   }
 
-  _getCellCode(spec) {
-    return spec.key_id + '-' + spec.value_id
-  }
+  /*   _getCellCode(spec) {
+      return spec.key_id + '-' + spec.value_id
+    } */
 
   _changeCurrentCellStatus(cell, x, y) {
     if (cell.status === CellStatus.WAITING) {

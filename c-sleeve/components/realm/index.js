@@ -1,15 +1,8 @@
 // components/realm/index.js
-import {
-  FenceGroup
-} from '../models/fence-group.js'
-
-import {
-  Judger
-} from '../models/judger.js'
-
-import {
-  Spu
-} from '../../models/spu.js'
+import { FenceGroup } from '../models/fence-group.js'
+import { Judger } from '../models/judger.js'
+import { Spu } from '../../models/spu.js'
+import { Cell } from '../models/cell.js'
 
 Component({
   /**
@@ -33,21 +26,34 @@ Component({
     discountPrice: 0,
     stock: 0,
     noSpec: false,
-    skuIntact: false
+    skuIntact: false,
+    currentValues: '',
+    missingKeys: ''
   },
   observers: {
     spu(spu) {
       if (!spu) return false
-      // 判断商品是否为单品
       if (Spu.isNoSpec(spu)) {
-        this.bindSkuData(spu.sku_list[0])
-        this.setData({
-          noSpec: true
-        })
-        return false
+        // 判断商品是否为单品
+        this.processNoSpec(spu)
+      } else {
+        // 否则该商品为有单品可选择情况
+        this.processHasSpec(spu)
       }
+    }
+  },
 
-      // 否则该商品为有单品可选择情况
+  /**
+   * 组件的方法列表
+   */
+  methods: {
+    processNoSpec(spu) {
+      this.bindSkuData(spu.sku_list[0])
+      this.setData({
+        noSpec: true
+      })
+    },
+    processHasSpec(spu) {
       let sku = []
       const fenceGroup = new FenceGroup(spu)
       fenceGroup.initFences()
@@ -59,14 +65,9 @@ Component({
       } else {
         this.bindSkuData(defaultSku)
       }
-      this.bindInitData(fenceGroup)
-    }
-  },
-
-  /**
-   * 组件的方法列表
-   */
-  methods: {
+      this.bindTipData()
+      this.bindFenceGroupData(fenceGroup)
+    },
     bindSpuData() {
       const spu = this.properties.spu
       this.setData({
@@ -85,20 +86,34 @@ Component({
         stock: sku.stock
       })
     },
-    bindInitData(fenceGroup) {
-      const skuIntact = this.data.judger.isSkuIntact()
+    bindFenceGroupData(fenceGroup) {
       this.setData({
         fences: fenceGroup.fences,
-        skuIntact
+      })
+    },
+    bindTipData() {
+      const skuIntact = this.data.judger.isSkuIntact()
+      const currentValues = this.data.judger.getCurrentValues()
+      const missingKeys = this.data.judger.getMissingKeys()
+      this.setData({
+        skuIntact,
+        currentValues,
+        missingKeys
       })
     },
     onCellTap(e) {
-      const { cell, y, x } = e.detail
+      const { cell: data, y, x } = e.detail
       const { judger } = this.data
+      const cell = new Cell(data.spec)
+      cell.status = data.status
       judger.judge(cell, x, y)
-      this.setData({
-        fences: judger.fenceGroup.fences
-      })
+      const skuIntact = judger.isSkuIntact()
+      if (skuIntact) {
+        const currentSku = judger.getDeterminateSku()
+        this.bindSkuData(currentSku)
+      }
+      this.bindTipData()
+      this.bindFenceGroupData(judger.fenceGroup)
     }
   }
 })

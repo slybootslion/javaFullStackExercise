@@ -1,4 +1,5 @@
 import { Cell } from './cell.js'
+import { Joiner } from '../../utils/joiner.js'
 
 class SkuPending {
   pending = []
@@ -13,6 +14,28 @@ class SkuPending {
       const cell = new Cell(i)
       this.insertCell(cell, idx)
     })
+  }
+
+  getCurrentSpecValues() {
+    const value = this.pending.map(cell => cell ? cell.spec.value : null)
+    return value
+  }
+
+  getMissingSpecKeysIndex() {
+    const keysIndex = []
+    for (let i = 0; i < this.size; i++) {
+      if (!this.pending[i]) keysIndex.push(i)
+    }
+    return keysIndex
+  }
+
+  getSkuCode() {
+    const joiner = new Joiner('#')
+    this.pending.forEach(cell => {
+      const cellCode = Cell.getCellCode(cell.spec)
+      joiner.join(cellCode)
+    })
+    return joiner.getStr()
   }
 
   isIntact() {

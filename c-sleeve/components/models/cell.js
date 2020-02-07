@@ -1,6 +1,4 @@
-import {
-  CellStatus
-} from '../../core/enum.js'
+import { CellStatus } from '../../core/enum.js'
 
 class Cell {
   title
@@ -12,6 +10,10 @@ class Cell {
     this.title = spec.value
     this.id = spec.value_id
     this.spec = spec
+  }
+
+  static getCellCode(spec) {
+    return spec.key_id + '-' + spec.value_id
   }
 }
 
