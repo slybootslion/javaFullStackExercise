@@ -6,6 +6,10 @@ import {
   Fence
 } from './fence.js'
 
+import {
+  CellStatus
+} from '../../core/enum.js'
+
 class FenceGroup {
   spu
   skuList = []
@@ -14,6 +18,22 @@ class FenceGroup {
   constructor(spu) {
     this.spu = spu
     this.skuList = spu.sku_list
+  }
+
+  getDefaultSku() {
+    const deafultSkuId = this.spu.default_sku_id
+    if (!deafultSkuId) return false
+    return this.skuList.find(i => i.id === deafultSkuId)
+  }
+
+  setCellStatusById(cellId, status) {
+    this.eachCell((cell) => {
+      if (cellId === cell.id) cell.status = status
+    })
+  }
+
+  setCellStatusByXY(x, y, status) {
+    this.fences[x].cells[y].status = status
   }
 
   initFences() {
