@@ -32,7 +32,8 @@ Component({
     price: 0,
     discountPrice: 0,
     stock: 0,
-    noSpec: false
+    noSpec: false,
+    skuIntact: false
   },
   observers: {
     spu(spu) {
@@ -85,19 +86,15 @@ Component({
       })
     },
     bindInitData(fenceGroup) {
+      const skuIntact = this.data.judger.isSkuIntact()
       this.setData({
-        fences: fenceGroup.fences
+        fences: fenceGroup.fences,
+        skuIntact
       })
     },
     onCellTap(e) {
-      const {
-        cell,
-        y,
-        x
-      } = e.detail
-      const {
-        judger
-      } = this.data
+      const { cell, y, x } = e.detail
+      const { judger } = this.data
       judger.judge(cell, x, y)
       this.setData({
         fences: judger.fenceGroup.fences

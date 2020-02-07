@@ -26,16 +26,8 @@ Component({
    */
   methods: {
     onTap(e) {
-      const {
-        cell,
-        x,
-        y
-      } = this.properties
-      this.triggerEvent('celltap', {
-        cell,
-        x,
-        y
-      }, {
+      const { cell, x, y } = this.properties
+      this.triggerEvent('celltap', { cell, x, y }, {
         bubbles: true,
         composed: true
       })

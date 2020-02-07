@@ -25,8 +25,14 @@ class Judger {
     this._initSkuPending()
   }
 
+  // sku是否全部选择
+  isSkuIntact() {
+    return this.skuPending.isIntact()
+  }
+
   _initSkuPending() {
-    this.skuPending = new SkuPending()
+    const specLength = this.fenceGroup.fences.length
+    this.skuPending = new SkuPending(specLength)
     const defaultSku = this.fenceGroup.getDefaultSku()
     if (!defaultSku) return false
     this.skuPending.init(defaultSku)

@@ -1,6 +1,5 @@
-<!--components/realm/index.wxml-->
+<!-- components/realm/index.wxml -->
 <wxs src="../../wxs/price.wxs" module="p"></wxs>
-
 <view class="container">
   <view class="sku-preview">
     <image class="sku-img" src="{{previewImg}}"></image>
@@ -12,10 +11,15 @@
           <l-price wx:if="{{p.slashedPrice(price, discount_price)}}" value="{{p.slashedPrice(price, discount_price)}}" color="#999" value-size="26" l-class="discount-price" deleted></l-price>
           <view></view>
           <view wx:if="{{stock && stock >= 10}}" class="stock">库存：{{stock}} 件</view>
-          <view wx:if="{{stock && stock > 0 && stock < 10}}" class="stock-pinch">仅剩：{{stock}} 件</view>
+          <view wx:if="{{stock && stock > 0 && stock < 10}}" class="stock-pinch">
+            仅剩：{{stock}} 件
+          </view>
         </view>
-        <view class="sku-pending">
-          <text>请选择：</text>
+        <view class="sku-pending" wx:if="{{!noSpec}}">
+          <text wx:if="{{!skuIntact}}">请选择：</text>
+          <text wx:else>已选择：</text>
+          <text wx:if="{{!skuIntact}}">{{"带选择规格名"}}</text>
+          <text wx:else>{{"已选规格值"}}</text>
         </view>
       </view>
     </view>

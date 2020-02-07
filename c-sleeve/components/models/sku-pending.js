@@ -1,17 +1,29 @@
-import {
-  Cell
-} from './cell.js'
+import { Cell } from './cell.js'
 
 class SkuPending {
   pending = []
+  size
 
-  constructor() {}
+  constructor(size) {
+    this.size = size
+  }
 
   init(sku) {
     sku.specs.forEach((i, idx) => {
       const cell = new Cell(i)
       this.insertCell(cell, idx)
     })
+  }
+
+  isIntact() {
+    for (let i = 0; i < this.size; i++) {
+      if (this._isEmptyPart(i)) return false
+    }
+    return true
+  }
+
+  _isEmptyPart(idx) {
+    return !this.pending[idx]
   }
 
   // x是行号

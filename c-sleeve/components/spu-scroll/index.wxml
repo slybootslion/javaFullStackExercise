@@ -1,6 +1,5 @@
-<!--components/spu-scroll/index.wxml-->
+<!-- components/spu-scroll/index.wxml -->
 <wxs src="../../wxs/price.wxs" module="p"></wxs>
-
 <view class="container s-class">
   <image src="{{theme.title_img}}" class="title"></image>
   <scroll-view scroll-x class="scroll-view">
