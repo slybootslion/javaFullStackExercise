@@ -3,3 +3,23 @@
 page {
   background-color: #f5f5f5;
 }
+
+@font-face {
+  font-family: "sleeve"; /* project id 754320 */
+  src: url("//at.alicdn.com/t/font_754320_bkj1yhadxde.eot");
+  src: url("//at.alicdn.com/t/font_754320_bkj1yhadxde.eot?#iefix")
+      format("embedded-opentype"),
+    url("//at.alicdn.com/t/font_754320_bkj1yhadxde.woff2") format("woff2"),
+    url("//at.alicdn.com/t/font_754320_bkj1yhadxde.woff") format("woff"),
+    url("//at.alicdn.com/t/font_754320_bkj1yhadxde.ttf") format("truetype"),
+    url("//at.alicdn.com/t/font_754320_bkj1yhadxde.svg#iconfont") format("svg");
+}
+
+.sleeve {
+  font-family: sleeve !important;
+  color: #157658 !important;
+}
+
+.l-icon-home::before {
+  content: "\e751";
+}

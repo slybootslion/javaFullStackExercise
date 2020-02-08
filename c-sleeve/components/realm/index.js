@@ -3,6 +3,7 @@ import { FenceGroup } from '../models/fence-group.js'
 import { Judger } from '../models/judger.js'
 import { Spu } from '../../models/spu.js'
 import { Cell } from '../models/cell.js'
+import { Cart } from '../../models/cart.js'
 
 Component({
   /**
@@ -28,7 +29,9 @@ Component({
     noSpec: false,
     skuIntact: false,
     currentValues: '',
-    missingKeys: ''
+    missingKeys: '',
+    currentSkuCount: Cart.SKU_MIN_COUNT,
+    outStock: false, // 是否缺货
   },
   observers: {
     spu(spu) {
@@ -49,6 +52,7 @@ Component({
   methods: {
     processNoSpec(spu) {
       this.bindSkuData(spu.sku_list[0])
+      this.setStockStatus(spu.sku_list[0].stock, this.data.currentSkuCount)
       this.setData({
         noSpec: true
       })
@@ -64,6 +68,7 @@ Component({
         this.bindSpuData()
       } else {
         this.bindSkuData(defaultSku)
+        this.setStockStatus(defaultSku.stock, this.data.currentSkuCount)
       }
       this.bindTipData()
       this.bindFenceGroupData(fenceGroup)
@@ -101,6 +106,23 @@ Component({
         missingKeys
       })
     },
+    setStockStatus(stock, currentCount) { // 修改是否缺货的状态
+      const outStock = this.isOutOfStock(stock, currentCount)
+      this.setData({
+        outStock
+      })
+    },
+    isOutOfStock(stock, currentCount) { // 判断库存和用户选择数量
+      return stock < currentCount
+    },
+    onSelectCount(e) {
+      const currentCount = e.detail.count
+      this.data.currentSkuCount = currentCount
+      if (this.data.judger.isSkuIntact()) {
+        const sku = this.data.judger.getDeterminateSku()
+        this.setStockStatus(sku.stock, currentCount)
+      }
+    },
     onCellTap(e) {
       const { cell: data, y, x } = e.detail
       const { judger } = this.data
@@ -111,6 +133,7 @@ Component({
       if (skuIntact) {
         const currentSku = judger.getDeterminateSku()
         this.bindSkuData(currentSku)
+        this.setStockStatus(currentSku.stock, this.data.currentSkuCount)
       }
       this.bindTipData()
       this.bindFenceGroupData(judger.fenceGroup)

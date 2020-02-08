@@ -61,3 +61,34 @@
   font-size: 20rpx;
   color: #d20109;
 }
+.counter-container {
+  margin-top: 34rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 200rpx;
+}
+
+.counter-container .text {
+  color: #555555;
+  font-size: 24rpx;
+}
+
+.bottom-btn {
+  width: 100%;
+  height: 100rpx;
+  background-color: #333333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+}
+
+.out-stock {
+  background-color: #dcebe6;
+}
+
+.bottom-btn text {
+  color: #ffffff;
+}

@@ -1,0 +1,6 @@
+/* components/tab-bar/index.wxss */
+
+.sleeve {
+  font-family: sleeve !important;
+  color: #157658 !important;
+}
