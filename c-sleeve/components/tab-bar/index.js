@@ -18,6 +18,18 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    onGoToHome(e) {
+      this.triggerEvent('gotohome', {})
+    },
+    onGoToCart(e) {
+      this.triggerEvent('gotocart')
+    },
+    onAddToCart(e) {
+      this.triggerEvent('addtocart')
+    },
+    onBuy(e) {
+      this.triggerEvent('buy')
+    }
 
   }
 })
