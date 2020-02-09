@@ -1,10 +1,10 @@
-<!--components/cell/index.wxml-->
+<!-- components/cell/index.wxml -->
 <view bindtap="onTap" class="container {{c(cell.status).outer}}">
   <view class="inner-container {{c(cell.status).inner}}">
+    <image class="img" mode="aspectFit" src="{{cell.skuImg}}" wx:if="{{cell.skuImg}}"></image>
     <text>{{cell.title}}</text>
   </view>
 </view>
-
 <wxs module="c">
   function statusStyle(status) {
     if (status === 'forbidden') {

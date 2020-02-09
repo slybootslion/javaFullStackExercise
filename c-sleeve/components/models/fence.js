@@ -1,6 +1,4 @@
-import {
-  Cell
-} from './cell.js'
+import { Cell } from './cell.js'
 
 class Fence {
   cells = []
@@ -25,6 +23,20 @@ class Fence {
       const cell = new Cell(i)
       this.cells.push(cell)
     })
+  }
+
+  setFenceSketch(skuList) {
+    console.log(this.cells)
+    this.cells.forEach(c => {
+      this._setCellSkuImg(c, skuList)
+    })
+    console.log(skuList)
+  }
+
+  _setCellSkuImg(cell, skuList) {
+    const specCode = Cell.getCellCode(cell.spec)
+    const matchedSku = skuList.find(s => s.code.includes(specCode))
+    if (matchedSku) cell.skuImg = matchedSku.img
   }
 
   pushValueTitle(title) {
