@@ -1,5 +1,9 @@
 {
-  "pages": ["pages/home/home", "pages/detail/detail"],
+  "pages": [
+    "pages/home/home",
+    "pages/detail/detail",
+    "pages/cart/cart"
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
