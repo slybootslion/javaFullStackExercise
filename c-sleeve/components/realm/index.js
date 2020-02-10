@@ -39,13 +39,15 @@ Component({
   observers: {
     spu(spu) {
       if (!spu) return false
+      // 判断商品是否为单品
       if (Spu.isNoSpec(spu)) {
-        // 判断商品是否为单品
+        // 无规格，单品
         this.processNoSpec(spu)
       } else {
         // 否则该商品为有单品可选择情况
         this.processHasSpec(spu)
       }
+      this.triggerSpecEvent()
     }
   },
 
@@ -75,6 +77,24 @@ Component({
       }
       this.bindTipData()
       this.bindFenceGroupData(fenceGroup)
+    },
+    triggerSpecEvent() {
+      const noSpec = Spu.isNoSpec(this.properties.spu)
+      if (noSpec) {
+        this.triggerEvent('specChange', {
+          noSpec
+        })
+      } else {
+        const skuIntact = this.data.judger.isSkuIntact()
+        const currentValues = this.data.judger.getCurrentValues()
+        const missingKeys = this.data.judger.getMissingKeys()
+        this.triggerEvent('specChange', {
+          noSpec,
+          skuIntact,
+          currentValues,
+          missingKeys
+        })
+      }
     },
     bindSpuData() {
       const spu = this.properties.spu
@@ -139,6 +159,7 @@ Component({
         this.setStockStatus(currentSku.stock, this.data.currentSkuCount)
       }
       this.bindTipData()
+      this.triggerSpecEvent()
       this.bindFenceGroupData(judger.fenceGroup)
     }
   }

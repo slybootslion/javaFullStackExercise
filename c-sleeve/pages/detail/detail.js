@@ -1,6 +1,7 @@
 // pages/detail/detail.js
 import { Spu } from '../../models/spu.js'
 import { ShoppingWay } from '../../core/enum.js'
+import { SaleExplain } from '../../models/sale-explain.js'
 
 Page({
 
@@ -10,7 +11,9 @@ Page({
   data: {
     spu: null,
     showRealm: false,
-    orderWay: ShoppingWay.CART
+    orderWay: ShoppingWay.CART,
+    specs: null,
+    saleExplain: []
   },
 
   /**
@@ -19,10 +22,15 @@ Page({
   async onLoad(options) {
     const pid = options.pid
     const spu = await Spu.getDetail(pid)
-    // console.log(spu)
+    const saleExplain = await SaleExplain.getFixed()
     this.setData({
-      spu
+      spu,
+      saleExplain
     })
+  },
+
+  onSpecChange() {
+
   },
 
   /**
@@ -64,4 +72,10 @@ Page({
       orderWay: ShoppingWay.BUY
     })
   },
+
+  onSpecChange(e) {
+    this.setData({
+      specs: e.detail
+    })
+  }
 })

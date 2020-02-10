@@ -26,11 +26,9 @@ class Fence {
   }
 
   setFenceSketch(skuList) {
-    console.log(this.cells)
     this.cells.forEach(c => {
       this._setCellSkuImg(c, skuList)
     })
-    console.log(skuList)
   }
 
   _setCellSkuImg(cell, skuList) {

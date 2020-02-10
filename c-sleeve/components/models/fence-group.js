@@ -47,7 +47,6 @@ class FenceGroup {
       fences.push(fence)
     })
     this.fences = fences
-    console.log(fences)
   }
 
   // 是否有可视规格
