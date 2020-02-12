@@ -1,1 +1,19 @@
 /* pages/search/search.wxss */
+
+page {
+  background-color: #ffffff;
+}
+
+.header {
+  width: 750rpx;
+  padding-bottom: 14rpx;
+  border-bottom: 2rpx solid #f3f3f3;
+  position: fixed;
+  z-index: 77;
+  top: 0;
+  background-color: #ffffff;
+}
+
+.header .input {
+  border-radius: 0;
+}

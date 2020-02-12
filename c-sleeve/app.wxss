@@ -23,3 +23,10 @@ page {
 .l-icon-home::before {
   content: "\e751";
 }
+
+/* 不显示滚动条 */
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}

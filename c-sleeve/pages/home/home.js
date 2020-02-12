@@ -1,28 +1,13 @@
 // pages/home/home.js
+import { Theme } from '../../models/theme.js'
 
-import {
-  config
-} from '../../config/config.js'
+import { Banner } from '../../models/banner.js'
 
-import {
-  Theme
-} from '../../models/theme.js'
+import { Category } from '../../models/category.js'
 
-import {
-  Banner
-} from '../../models/banner.js'
+import { Activity } from '../../models/activity.js'
 
-import {
-  Category
-} from '../../models/category.js'
-
-import {
-  Activity
-} from '../../models/activity.js'
-
-import {
-  SpuPaging
-} from '../../models/spu-paging.js'
+import { SpuPaging } from '../../models/spu-paging.js'
 
 Page({
 
@@ -92,7 +77,7 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh() {},
+  onPullDownRefresh() { },
 
   /**
    * 页面上拉触底事件的处理函数
