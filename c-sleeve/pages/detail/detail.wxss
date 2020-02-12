@@ -44,10 +44,6 @@
   justify-content: center;
 }
 
-.detail-img-container {
-  margin-bottom: 200rpx;
-}
-
 .detail-img {
   width: 100%;
   display: flex;

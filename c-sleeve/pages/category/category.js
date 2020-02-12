@@ -1,18 +1,54 @@
 // pages/category/category.js
+import { getWindowHeightRpx } from "../../utils/system"
+import { Categories } from '../../models/categories'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    segHeight: 0,
+    roots: [],
+    currentSubs: [],
+    currentBannerImg: '',
+    defaultRootId: 2,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad(options) {
+    this.setDynamicSegmentHeight()
+    this.initCategoryData()
+  },
 
+  async initCategoryData() {
+    const categories = new Categories()
+    this.data.categories = categories
+
+    await categories.getAll()
+    const roots = categories.getRoots()
+    const defaultRoot = this.getDefaultRoots(roots)
+    const currentSubs = categories.getSubs(defaultRoot.id)
+    this.setData({
+      roots,
+      currentSubs,
+      currentBannerImg: defaultRoot.img
+    })
+  },
+
+  getDefaultRoots(roots) {
+    let defaultRoot = roots.find(r => r.id === this.data.defaultRootId)
+    if (!defaultRoot) defaultRoot = roots[0]
+    return defaultRoot
+  },
+
+  async setDynamicSegmentHeight() {
+    const res = await getWindowHeightRpx()
+    const segHeight = res - 60 - 20 - 2
+    this.setData({
+      segHeight
+    })
   },
 
   onGotoSearch(e) {
@@ -20,6 +56,8 @@ Page({
       url: '/pages/search/search'
     })
   },
+
+
 
 
   /**

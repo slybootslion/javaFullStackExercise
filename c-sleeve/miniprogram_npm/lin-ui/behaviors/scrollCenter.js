@@ -21,6 +21,7 @@ export default Behavior({
           .slice(0, currentIndex)
           .reduce((prev, curr) => prev + curr[type], 0);
 
+        if (!currentRect) return false
         transformDistance += (currentRect[type] - scrollWidth) / 2;
 
         if (type === 'width') {

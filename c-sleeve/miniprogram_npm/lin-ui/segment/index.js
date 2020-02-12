@@ -74,11 +74,11 @@ Component({
 
   observers: {
     'activeKey': function (newKey) {
-      if(!newKey) return;
-      const index = this.data.tabList.findIndex(tab=>tab.key===newKey);
+      if (!newKey) return;
+      const index = this.data.tabList.findIndex(tab => tab.key === newKey);
       this.setData({
-        currentIndex:index
-      },() => {
+        currentIndex: index
+      }, () => {
         if (this.data.scrollable) {
           this.queryMultipleNodes();
         }

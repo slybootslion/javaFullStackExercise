@@ -2,6 +2,7 @@
 import { Spu } from '../../models/spu.js'
 import { ShoppingWay } from '../../core/enum.js'
 import { SaleExplain } from '../../models/sale-explain.js'
+import { getWindowHeightRpx } from '../../utils/system.js'
 
 Page({
 
@@ -13,7 +14,8 @@ Page({
     showRealm: false,
     orderWay: ShoppingWay.CART,
     specs: null,
-    saleExplain: []
+    saleExplain: [],
+    h: 0
   },
 
   /**
@@ -23,9 +25,11 @@ Page({
     const pid = options.pid
     const spu = await Spu.getDetail(pid)
     const saleExplain = await SaleExplain.getFixed()
+    const h = (await getWindowHeightRpx()) - 100
     this.setData({
       spu,
-      saleExplain
+      saleExplain,
+      h
     })
   },
 
