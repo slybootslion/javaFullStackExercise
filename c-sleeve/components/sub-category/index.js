@@ -4,7 +4,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    categories: Array,
+    bannerImg: String
   },
 
   /**
@@ -18,6 +19,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onTapGridItem(e) {
+      const id = e.detail.key
+      this.triggerEvent('itemtap', {
+        cid: id
+      })
+    }
   }
 })

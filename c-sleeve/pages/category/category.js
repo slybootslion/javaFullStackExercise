@@ -1,6 +1,7 @@
 // pages/category/category.js
 import { getWindowHeightRpx } from "../../utils/system"
 import { Categories } from '../../models/categories'
+import { SpuListType } from '../../core/enum'
 Page({
 
   /**
@@ -51,6 +52,23 @@ Page({
     })
   },
 
+  onSegChange(e) {
+    const rootId = e.detail.activeKey
+    const currentSubs = this.data.categories.getSubs(rootId)
+    const currentRoot = this.data.categories.getRoot(rootId)
+    this.setData({
+      currentSubs,
+      currentBannerImg: currentRoot.img
+    })
+  },
+
+  onJumpToSpuList(e) {
+    const cid = e.detail.cid
+    wx.navigateTo({
+      url: `/pages/spu-list/spu-list?cid=${cid}&type=${SpuListType.SUB_CATEGORY}`
+    })
+  },
+
   onGotoSearch(e) {
     wx.navigateTo({
       url: '/pages/search/search'
@@ -58,12 +76,10 @@ Page({
   },
 
 
-
-
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage() {
 
   }
 })

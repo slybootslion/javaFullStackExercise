@@ -6,11 +6,13 @@
     </l-button>
   </view>
   <view class="main">
-    <l-segment height="{{segHeight}}" item-height="90" active-key="{{defaultRootId}}" even="{{false}}" width="160" l-active-class="segment-item-active" l-inactive-class="segment-item" l-line-class="l-seg-line" placement="left" scrollable>
+    <l-segment height="{{segHeight}}" item-height="90" active-key="{{defaultRootId}}" even="{{false}}" width="160" l-active-class="segment-item-active" l-inactive-class="segment-item" l-line-class="l-seg-line" placement="left" bind:linchange="onSegChange" scrollable>
       <block wx:for="{{roots}}" wx:key="index">
         <l-segment-item key="{{item.id}}" tab="{{item.name}}"></l-segment-item>
       </block>
     </l-segment>
-    <view></view>
+    <view class="right">
+      <s-sub-category categories="{{currentSubs}}" bannerImg="{{currentBannerImg}}" bind:itemtap="onJumpToSpuList"></s-sub-category>
+    </view>
   </view>
 </view>
