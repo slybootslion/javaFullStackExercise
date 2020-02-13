@@ -1,0 +1,7 @@
+class HistoryKeyword {
+
+}
+
+export {
+  HistoryKeyword
+}

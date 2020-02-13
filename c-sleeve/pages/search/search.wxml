@@ -1,17 +1,23 @@
 <!-- pages/search/search.wxml -->
 <view class="header">
-  <l-search-bar l-class="input" maxlength="9" bg-color="#f1f1f1" placeholder="输入商品名称"></l-search-bar>
+  <l-search-bar l-class="input" maxlength="9" bg-color="#f1f1f1" placeholder="输入商品名称" bind:linconfirm="onSearch"></l-search-bar>
 </view>
 <view class="container">
   <view>
     <view class="history-container">
-      <view class="slide">
+      <div class="history-title">
+        <view class="slide"></view>
         <text>历史搜索</text>
-        <view>
-          <l-icon name="delete"></l-icon>
+        <view style="flex:1"></view>
+        <view class="icon">
+          <l-icon size="32" name="delete"></l-icon>
         </view>
+      </div>
+      <view class="history-tags">
+        <block wx:for="{{historyTags}}" wx:key="index">
+          <l-tag name="{{item}}"></l-tag>
+        </block>
       </view>
-      <view class="history-tags"></view>
     </view>
   </view>
 </view>
