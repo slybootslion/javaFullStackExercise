@@ -1,6 +1,4 @@
-import {
-  Http
-} from './http.js'
+import {Http} from './http.js'
 
 class Paging {
 
@@ -13,10 +11,10 @@ class Paging {
   accumulator = [] // 类加的数据
 
   constructor({
-    req,
-    start = 0,
-    count = 10
-  }) {
+                req,
+                start = 0,
+                count = 10
+              }) {
     this.req = req
     this.url = req.url
     this.start = start
@@ -82,6 +80,7 @@ class Paging {
     }
     this.req.url = url
   }
+
   // 获取发送请求的锁状态
   _getLocker() {
     if (this.locker) {
@@ -90,6 +89,7 @@ class Paging {
     this.locker = true
     return true
   }
+
   // 释放请求锁的状态
   _releaseLocker() {
     this.locker = false
