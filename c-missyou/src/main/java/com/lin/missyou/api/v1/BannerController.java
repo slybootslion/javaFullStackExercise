@@ -10,6 +10,6 @@ public class BannerController {
 
     @GetMapping("/test")
     public String test() {
-        return "hello, Spring Boot! this is a test api";
+        return "hello, Spring Boot!";
     }
 }
