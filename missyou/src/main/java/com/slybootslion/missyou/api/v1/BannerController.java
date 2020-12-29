@@ -1,15 +1,18 @@
 package com.slybootslion.missyou.api.v1;
 
-import org.springframework.stereotype.Controller;
+import com.slybootslion.missyou.exception.http.NotFountException;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@RequestMapping("/v1/banner")
 public class BannerController {
 
     @GetMapping("/test")
-    @ResponseBody
-    public String test() {
-        return "hello java";
+    public String test() throws Exception {
+//        throw new NotFountException(10001);
+        throw new RuntimeException("error msg");
+//        return "Hello, spring boot";
     }
 }
